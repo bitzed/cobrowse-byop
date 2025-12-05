@@ -28,7 +28,7 @@ const CONFIG = {
   TOKEN_SERVER_URL: '../token',
   
   /** Your Cobrowse SDK Key from Zoom Marketplace */
-  SDK_KEY: '5PMkxFDpnaWXdw5Uw8q8DAdV5qNzD2ahRWJp',
+  SDK_KEY: 'YOUR_SDK_KEY_HERE',
   
   /** DOM selector where the viewer iframe will be rendered */
   VIEWER_ROOT_SELECTOR: '#viewer-root',

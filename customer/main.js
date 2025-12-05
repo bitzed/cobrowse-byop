@@ -28,7 +28,7 @@ const CONFIG = {
   TOKEN_SERVER_URL: '../token',
   
   /** Your Cobrowse SDK Key from Zoom Marketplace */
-  SDK_KEY: '5PMkxFDpnaWXdw5Uw8q8DAdV5qNzD2ahRWJp',
+  SDK_KEY: 'YOUR_SDK_KEY_HERE',
   
   /** PIN code length for BYOP mode */
   PIN_LENGTH: 8,
