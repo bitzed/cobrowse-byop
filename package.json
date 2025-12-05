@@ -1,0 +1,16 @@
+{
+  "name": "cobrowse-npm-sample",
+  "version": "1.0.0",
+  "description": "Zoom Cobrowse SDK sample using npm package with local rendering",
+  "scripts": {
+    "build": "bun run build:customer && bun run build:agent",
+    "build:customer": "bun build customer/main.js --outfile=dist/customer.js --minify",
+    "build:agent": "bun build agent/main.js --outfile=dist/agent.js --minify",
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@zoom/cobrowsesdk": "^2.11.0"
+  },
+  "devDependencies": {}
+}

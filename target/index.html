@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Product Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    
+    /* Navigation */
+    .nav {
+      background: white;
+      padding: 12px 20px;
+      display: flex;
+      gap: 24px;
+      border-bottom: 1px solid #ddd;
+      overflow-x: auto;
+    }
+    
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      white-space: nowrap;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    
+    .nav a:hover {
+      background: #f0f0f0;
+    }
+    
+    .nav a.active {
+      background: #667eea;
+      color: white;
+    }
+    
+    /* Main content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    
+    /* Product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    .product-image {
+      height: 200px;
+      background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+    }
+    
+    .product-info {
+      padding: 16px;
+    }
+    
+    .product-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    
+    .product-description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    
+    .product-price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #667eea;
+      margin-bottom: 12px;
+    }
+    
+    .product-btn {
+      width: 100%;
+      padding: 12px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .product-btn:hover {
+      background: #5a6fd6;
+    }
+    
+    /* Form section */
+    .form-section {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .form-section h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: #333;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #333;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .submit-btn {
+      padding: 12px 24px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    
+    .submit-btn:hover {
+      background: #218838;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #333;
+      color: white;
+      padding: 40px 24px;
+      margin-top: 48px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    
+    .footer h3 {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .footer ul {
+      list-style: none;
+    }
+    
+    .footer li {
+      margin-bottom: 8px;
+    }
+    
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>📱 TechShop</h1>
+    <p>Your one-stop shop for the latest gadgets</p>
+  </header>
+  
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#" class="active">All Products</a>
+    <a href="#">Smartphones</a>
+    <a href="#">Tablets</a>
+    <a href="#">Laptops</a>
+    <a href="#">Accessories</a>
+    <a href="#">Support</a>
+  </nav>
+  
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Product Grid -->
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-image">📱</div>
+        <div class="product-info">
+          <h3 class="product-name">SmartPhone Pro X</h3>
+          <p class="product-description">Latest flagship with 6.7" display, 5G support, and 108MP camera</p>
+          <div class="product-price">$999</div>
+          <button class="product-btn">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">💻</div>
+        <div class="product-info">
+          <h3 class="product-name">UltraBook Air</h3>
+          <p class="product-description">Thin & light laptop with M2 chip, 16GB RAM, 512GB SSD</p>
+          <div class="product-price">$1,299</div>
+          <button class="product-btn">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">⌚</div>
+        <div class="product-info">
+          <h3 class="product-name">Smart Watch Series 8</h3>
+          <p class="product-description">Advanced health monitoring, GPS, and 2-day battery life</p>
+          <div class="product-price">$449</div>
+          <button class="product-btn">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">🎧</div>
+        <div class="product-info">
+          <h3 class="product-name">Wireless Earbuds Pro</h3>
+          <p class="product-description">Active noise cancellation, spatial audio, 30hr battery</p>
+          <div class="product-price">$249</div>
+          <button class="product-btn">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">📟</div>
+        <div class="product-info">
+          <h3 class="product-name">Tablet Pro 12.9"</h3>
+          <p class="product-description">Liquid Retina XDR display, M2 chip, Apple Pencil support</p>
+          <div class="product-price">$1,099</div>
+          <button class="product-btn">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">🔌</div>
+        <div class="product-info">
+          <h3 class="product-name">USB-C Hub Pro</h3>
+          <p class="product-description">8-in-1 hub with HDMI, USB-A, SD card, and 100W PD</p>
+          <div class="product-price">$79</div>
+          <button class="product-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contact Form -->
+    <section class="form-section">
+      <h2>📧 Contact Support</h2>
+      <form onsubmit="event.preventDefault(); alert('Form submitted!');">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="">Select a topic...</option>
+            <option value="order">Order Status</option>
+            <option value="return">Returns & Refunds</option>
+            <option value="technical">Technical Support</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="How can we help?"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#">Deals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
