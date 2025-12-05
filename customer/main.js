@@ -141,7 +141,14 @@ async function startSession() {
     // Step 3: Initialize SDK
     const initResult = await new Promise((resolve, reject) => {
       ZoomCobrowseSDK.init({
-        appKey: CONFIG.SDK_KEY
+        appKey: CONFIG.SDK_KEY,
+        multiTabSessionPersistence: {
+          enable: true,
+        },
+        piiMask: {
+          maskType: 'custom_input',
+          maskCssSelectors: '.hideme',
+        },
       }, (result) => {
         if (result.success) {
           resolve(result);
