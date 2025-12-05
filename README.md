@@ -102,7 +102,7 @@ Server runs on port 8080 (or `PORT` env variable).
 ```javascript
 import ZoomCobrowseSDK from '@zoom/cobrowsesdk';
 
-// Initialize with appKey (not sdkToken!)
+// Initialize with appKey
 ZoomCobrowseSDK.init({ appKey: SDK_KEY }, (session) => {
   // Generate custom PIN (BYOP)
   const pinCode = generatePinCode(); // 8 chars, A-Z0-9
@@ -135,11 +135,11 @@ ZoomCobrowseAgentSDK.init({
 
 ### CDN vs NPM Comparison
 ```javascript
-// ❌ CDN approach - requires CSP changes on target
+// CDN approach - requires CSP changes on target
 const endpoint = await session.createAgentViewerEndpoint({ pinCode, sdkToken });
 iframe.src = endpoint.agentViewerUrl; // Loads from Zoom servers!
 
-// ✅ NPM approach - no CSP changes needed
+// NPM approach - no CSP changes needed
 session.join({ pinCode, sdkToken }, callback); // Renders locally!
 ```
 
@@ -196,7 +196,6 @@ Make sure all pages are served from the same origin.
 
 ## Important Notes
 
-- **Customer page should not contain iframes** - The SDK captures the page content directly
 - **zoomAppRoot is required** for NPM mode Agent viewer
 - **role_type must be numeric** in JWT token (1 for customer, 2 for agent)
 
