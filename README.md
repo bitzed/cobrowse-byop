@@ -33,7 +33,7 @@ Agent Page → session.join() → SDK creates iframe internally
 | Agent Viewer Location | Zoom servers (`us01-zcb.zoom.us`) | Your domain |
 | CSP Requirements | Target needs `frame-ancestors` with Zoom | None |
 | Join Method | `createAgentViewerEndpoint()` → URL | `session.join()` → local render |
-| Init Parameter | `sdkToken` in init | `appKey` in init |
+| Init Parameter | – | `appKey` in init |
 | Bundle Size | Smaller (loads from CDN) | Larger (includes viewer) |
 
 ## Setup
